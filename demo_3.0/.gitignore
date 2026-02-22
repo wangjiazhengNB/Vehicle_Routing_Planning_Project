@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Output files (generated maps, logs, etc.)
+output/
+*.log
+
+# Database (optional - comment out if you want to track schema)
+# *.sql
+
+# Config with sensitive data (optional)
+# config.yaml
+
+# Temporary files
+*.tmp
+*.bak
+RUN_NOW.html
+nul

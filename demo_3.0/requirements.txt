@@ -1,0 +1,23 @@
+# Web框架
+Flask==3.1.0
+Flask-CORS==5.0.0
+
+# 数据库
+PyMySQL==1.1.1
+SQLAlchemy>=2.0.36
+
+# 地图可视化
+folium>=0.19.0
+
+# HTTP请求
+requests>=2.32.0
+
+# 配置管理
+pyyaml>=6.0.2
+
+# 日志
+colorlog>=6.9.0
+
+# 测试
+pytest>=8.3.0
+pytest-cov>=6.0.0
