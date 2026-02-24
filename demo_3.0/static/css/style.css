@@ -7,7 +7,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
     min-height: 100vh;
     padding: 20px;
 }
@@ -19,10 +19,26 @@ body {
 
 /* 头部 */
 .header {
-    text-align: center;
     color: white;
     margin-bottom: 40px;
     animation: fadeInDown 0.6s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-left {
+    text-align: center;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .header h1 {
@@ -34,6 +50,99 @@ body {
 .subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
+}
+
+/* 用户区域 */
+.header-right {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 100;
+}
+
+.btn-login,
+.btn-register {
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-login {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-login:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-register {
+    background: white;
+    color: #2193b0;
+}
+
+.btn-register:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 用户登录状态 */
+.user-logged-in {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+.user-info::before {
+    content: '';
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.username {
+    color: white;
+    font-weight: 500;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* 输入区域 */
@@ -69,7 +178,7 @@ body {
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #2193b0;
 }
 
 .algorithm-group {
@@ -96,13 +205,13 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
     color: white;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 15px rgba(33, 147, 176, 0.4);
 }
 
 .btn-secondary {
@@ -117,12 +226,12 @@ body {
 
 .btn-outline {
     background: transparent;
-    border: 2px solid #667eea;
-    color: #667eea;
+    border: 2px solid #2193b0;
+    color: #2193b0;
 }
 
 .btn-outline:hover {
-    background: #667eea;
+    background: #2193b0;
     color: white;
 }
 
@@ -325,4 +434,434 @@ body {
     .result-info {
         grid-template-columns: 1fr;
     }
+
+    .vehicle-type-options {
+        flex-direction: column;
+    }
+
+    .objectives-checkboxes {
+        flex-direction: column;
+    }
+}
+
+/* ==================== 车辆类型选择 ==================== */
+.vehicle-type-group {
+    margin-bottom: 25px;
+}
+
+.vehicle-type-label {
+    display: block;
+    margin-bottom: 12px;
+    color: #333;
+    font-weight: 500;
+}
+
+.vehicle-type-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.vehicle-option {
+    flex: 1;
+    min-width: 120px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.vehicle-option:hover {
+    border-color: #2193b0;
+    background: rgba(33, 147, 176, 0.05);
+}
+
+.vehicle-option input[type="radio"] {
+    display: none;
+}
+
+.vehicle-option input[type="radio"]:checked + .vehicle-icon {
+    color: #2193b0;
+    transform: scale(1.1);
+}
+
+.vehicle-icon {
+    font-size: 2rem;
+    transition: all 0.3s;
+}
+
+.vehicle-option span {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.vehicle-option input[type="radio"]:checked + .vehicle-icon + span {
+    color: #2193b0;
+    font-weight: 500;
+}
+
+/* ==================== 途经点样式 ==================== */
+.waypoints-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.waypoints-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.waypoints-header label {
+    font-weight: 500;
+    color: #333;
+}
+
+.btn-add-waypoint {
+    padding: 6px 14px;
+    background: #2193b0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-add-waypoint:hover {
+    background: #1976a3;
+}
+
+.waypoints-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.waypoint-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+.waypoint-number {
+    width: 30px;
+    height: 30px;
+    background: #2193b0;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.waypoint-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.waypoint-input:focus {
+    outline: none;
+    border-color: #2193b0;
+}
+
+.waypoint-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-waypoint-remove {
+    width: 30px;
+    height: 30px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-waypoint-remove:hover {
+    background: #d32f2f;
+}
+
+.btn-waypoint-up,
+.btn-waypoint-down {
+    width: 30px;
+    height: 30px;
+    background: #f0f0f0;
+    color: #666;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-waypoint-up:hover,
+.btn-waypoint-down:hover {
+    background: #e0e0e0;
+}
+
+/* ==================== 优化目标 ==================== */
+.objectives-group {
+    margin-bottom: 25px;
+}
+
+.objectives-checkboxes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2193b0;
+    cursor: pointer;
+}
+
+.checkbox-wrapper span {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* ==================== 输入框清除按钮 ==================== */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding-right: 35px;
+}
+
+.btn-clear {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s;
+}
+
+.btn-clear:hover {
+    color: #f44336;
+}
+
+/* ==================== 算法信息按钮 ==================== */
+.btn-info {
+    background: #2193b0;
+    color: white;
+}
+
+.btn-info:hover {
+    background: #1976a3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(33, 147, 176, 0.4);
+}
+
+.algorithms-group {
+    position: relative;
+}
+
+.btn-algorithm-info {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #2193b0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* ==================== 模态框样式 ==================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h2 {
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.btn-close:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ==================== 路况设置 ==================== */
+.traffic-section {
+    margin-bottom: 25px;
+}
+
+.traffic-section h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.traffic-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.traffic-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    animation: fadeIn 0.3s ease;
+}
+
+.traffic-item input,
+.traffic-item select {
+    padding: 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.btn-add-traffic {
+    padding: 6px 14px;
+    background: #2193b0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-add-traffic:hover {
+    background: #1976a3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== 算法信息 ==================== */
+.algorithm-detail {
+    text-align: center;
+}
+
+.algorithm-detail h3 {
+    color: #2193b0;
+    margin-bottom: 15px;
+}
+
+.algorithm-desc {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.algorithm-meta {
+    text-align: left;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.algorithm-meta p {
+    margin: 8px 0;
+    color: #555;
 }

@@ -20,7 +20,8 @@ class MapService:
         """初始化地图服务"""
         self.tile_url = config.get("map.tile_url")
         self.attribution = config.get("map.attribution")
-        self.default_zoom = config.get("map.default_zoom", 14)
+        self.default_zoom = config.get("map.default_zoom", 13)  # 调整默认缩放级别
+        self.map_height = 600  # 地图高度
 
     def generate_route_map(self, start_info: Tuple[float, float, str],
                           end_info: Tuple[float, float, str],
@@ -93,11 +94,12 @@ class MapService:
         # 处理中文编码
         self._fix_chinese_encoding(output_file)
 
-        return output_file
+        # 返回相对路径（用于 API 访问）
+        return os.path.basename(output_file)
 
     def _calculate_zoom_level(self, distance_m: float) -> int:
         """
-        根据距离计算合适的缩放级别
+        根据距离计算合适的缩放级别（优化后更合理）
 
         Args:
             distance_m: 距离（米）
@@ -105,16 +107,21 @@ class MapService:
         Returns:
             缩放级别
         """
-        if distance_m < 1000:
-            return 17
-        elif distance_m < 5000:
+        # 调整缩放级别，使地图显示更合理
+        if distance_m < 500:
+            return 16  # 短距离，高缩放
+        elif distance_m < 1500:
             return 15
-        elif distance_m < 10000:
+        elif distance_m < 3000:
             return 14
-        elif distance_m < 20000:
+        elif distance_m < 8000:
             return 13
-        else:
+        elif distance_m < 15000:
             return 12
+        elif distance_m < 30000:
+            return 11
+        else:
+            return 10  # 超长距离，低缩放以显示更广的范围
 
     def _fix_chinese_encoding(self, file_path: str):
         """

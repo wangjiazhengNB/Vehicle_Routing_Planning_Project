@@ -2,9 +2,13 @@
 Flask==3.1.0
 Flask-CORS==5.0.0
 
+# JWT认证
+PyJWT>=2.9.0
+
 # 数据库
 PyMySQL==1.1.1
 SQLAlchemy>=2.0.36
+cryptography>=46.0.0
 
 # 地图可视化
 folium>=0.19.0

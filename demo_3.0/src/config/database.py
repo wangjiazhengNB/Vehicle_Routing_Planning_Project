@@ -53,6 +53,6 @@ def init_db():
 
     注意: v3.0 不再使用 road_network 表，改用高德API实时获取路网数据
     """
-    from ..models import route_result, address_cache
+    from ..models import route_result, address_cache, user
 
     Base.metadata.create_all(bind=engine)
