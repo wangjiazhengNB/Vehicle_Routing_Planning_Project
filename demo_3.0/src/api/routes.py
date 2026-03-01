@@ -13,7 +13,7 @@ config = get_config()
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
 # 路由规划服务
-route_planner = get_route_planner()
+route_planner = get_route_planner() 
 
 
 @api_bp.route('/algorithms/list', methods=['GET'])

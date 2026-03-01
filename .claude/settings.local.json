@@ -6,7 +6,8 @@
       "Bash(ping:*)",
       "Bash(netstat:*)",
       "Bash(curl:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(py:*)"
     ]
   }
 }

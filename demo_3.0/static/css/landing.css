@@ -6,14 +6,20 @@
 }
 
 :root {
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
+     --primary-gradient: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    --primary-color: #2193b0;
+    --secondary-color: #6dd5ed;
     --text-dark: #1a1a2e;
     --text-gray: #4a4a68;
     --text-light: #999;
     --bg-light: #f8f9fa;
     --white: #ffffff;
+}
+
+/* ==================== 滚动动画类 ==================== */
+.animate-enter {
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 body {
@@ -53,7 +59,7 @@ a {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--primary-color);
 }
@@ -247,9 +253,8 @@ a {
     color: #4caf50;
 }
 
-.map-point.end .point-pulse {
-    color: #f44336;
-    animation-delay: 1s;
+.map-point.start .point-pulse {
+    color: #4caf50;
 }
 
 .route-path {

@@ -141,7 +141,7 @@ body {
 /* ==================== 表单样式 ==================== */
 .auth-form {
     display: none;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.3 ease;
 }
 
 .auth-form.active {

@@ -166,6 +166,7 @@ class DijkstraAlgorithm(PathAlgorithm):
         return AlgorithmResult(self.name, path, cost, self.get_metrics())
 
 
+# 单次调用更加快捷
 # 便捷函数
 def dijkstra(graph: Dict, start: int, end: int,
              objectives: List[str] = None, weights: Dict = None) -> Tuple[List[int], float]:
