@@ -51,6 +51,9 @@ config.local.yaml
 .DS_Store
 Thumbs.db
 
+# Claude Code 配置（本地）
+.claude/
+
 # 测试
 .pytest_cache/
 .coverage
